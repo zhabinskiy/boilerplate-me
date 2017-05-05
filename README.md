@@ -18,11 +18,11 @@ npm live
 
 ## Шаблоны
 
-Страницы собираются из отдельных файлов, лежащих в `sources/templates` и компилируются в `dist/`. В директории может быть любая вложенность, например `sources/templates/blocks/header/head.html`. Для подключения шаблона на страницу используется тэг `<include src="path/to/index.html"></include>`.
+Страницы собираются из отдельных файлов, лежащих в `sources/templates/..` и компилируются в `dist/`. В директории может быть любая вложенность шаблонов, например `sources/templates/blocks/header/head.html`, а отдельные страницы лежат в корневой директории `sources/templates`. Для подключения шаблона на страницу используется тэг `<include src="path/to/index.html"></include>`.
 
 ## Стили
 
-Используется [Sass](http://sass-lang.com/). Стили кладутся в `sources/styles` и подключаются в `main.scss`. Компилируются в `dist/css/main.css`.
+Используется [Sass](http://sass-lang.com/). Стили создаются в `sources/styles` и подключаются в `main.scss`. Компилируются в `dist/css/main.css`.
 
 ## Скрипты
 

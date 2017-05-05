@@ -13,7 +13,7 @@ npm build
 
 Живая сборка
 ```bash
-npm live
+npm run live
 ```
 
 ## Шаблоны

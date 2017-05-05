@@ -15,10 +15,10 @@ const gulp = require('gulp'),
 const paths = {
   styles: 'src/styles/',
   css: 'dist/css/',
-  scripts: 'src/scripts/',
-  js: 'dist/js/',
   images: 'src/images/',
   img: 'dist/img/',
+  scripts: 'src/scripts/',
+  js: 'dist/js/',
   templates: 'src/templates/',
   html: 'dist/',
 };

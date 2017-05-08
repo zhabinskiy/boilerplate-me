@@ -27,7 +27,7 @@ npm start
 
 ## Стили
 
-Используется [Sass](http://sass-lang.com/). Стили создаются в `src/styles` и подключаются в `main.scss`. Компилируются в `dist/css/main.css`.
+Используется [Sass](http://sass-lang.com/). Конфигурация линтера находится в `.sass-lint.yml` (от команды Бутстрапа). Стили создаются в `src/styles` и подключаются в `main.scss`. Компилируются в `dist/css/main.css`.
 
 ## Картинки
 

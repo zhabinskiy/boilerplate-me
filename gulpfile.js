@@ -1,16 +1,17 @@
 'use strict';
 
 const gulp = require('gulp'),
-      sass = require('gulp-sass'),
-      include = require('gulp-html-tag-include'),
-      imagemin = require('gulp-imagemin'),
-      babel = require('gulp-babel'),
-      concat = require('gulp-concat'),
-      uglify = require('gulp-uglify'),
-      portfinder = require('portfinder'),
-      plumber = require('gulp-plumber'),
-      browserSync = require('browser-sync'),
-      reload = browserSync.reload;
+  sass = require('gulp-sass'),
+  include = require('gulp-html-tag-include'),
+  imagemin = require('gulp-imagemin'),
+  babel = require('gulp-babel'),
+  concat = require('gulp-concat'),
+  uglify = require('gulp-uglify'),
+  portfinder = require('portfinder'),
+  plumber = require('gulp-plumber'),
+  gutil = require('gulp-util'),
+  browserSync = require('browser-sync'),
+  reload = browserSync.reload;
 
 const paths = {
   styles: 'src/styles/',
@@ -20,7 +21,7 @@ const paths = {
   scripts: 'src/scripts/',
   js: 'dist/js/',
   templates: 'src/templates/',
-  html: 'dist/',
+  html: 'dist/'
 };
 
 // Одноразовая сборка проекта
@@ -43,7 +44,8 @@ gulp.task('watch', function() {
 
 // Собираем HTML
 gulp.task('templates', function() {
-  gulp.src(paths.templates + '*.html')
+  gulp
+    .src(paths.templates + '*.html')
     .pipe(include())
     .pipe(plumber({errorHandler: onError}))
     .pipe(gulp.dest(paths.html))
@@ -52,25 +54,30 @@ gulp.task('templates', function() {
 
 // Собираем SASS
 gulp.task('styles', function() {
-  return gulp.src(paths.styles + 'main.scss')
-    .pipe(sass({
-      outputStyle: 'compressed',
-      errLogToConsole: true
-    }).on('error', onError))
+  return gulp
+    .src(paths.styles + 'main.scss')
+    .pipe(
+      sass({
+        outputStyle: 'compressed',
+        errLogToConsole: true
+      }).on('error', onError)
+    )
     .pipe(gulp.dest(paths.css))
     .pipe(reload({stream: true}));
 });
 
 // Оптимизируем картинки
 gulp.task('images', function() {
-  return gulp.src(paths.images + '/**/*.{png,jpg,gif,svg}')
+  return gulp
+    .src(paths.images + '/**/*.{png,jpg,gif,svg}')
     .pipe(imagemin())
     .pipe(gulp.dest(paths.img));
 });
 
 // Собираем JS
 gulp.task('scripts', function() {
-  gulp.src(paths.scripts + '*.js')
+  gulp
+    .src(paths.scripts + '*.js')
     .pipe(plumber({errorHandler: onError}))
     .pipe(babel())
     .pipe(concat('scripts.js'))
@@ -83,7 +90,7 @@ gulp.task('server', function() {
   portfinder.getPort(function(err, port) {
     browserSync({
       server: {
-        baseDir: "dist/",
+        baseDir: 'dist/',
         serveStaticOptions: {
           extensions: ['html']
         }
@@ -97,18 +104,16 @@ gulp.task('server', function() {
 
 // Обновление страниц
 gulp.task('html', function() {
-  gulp.src(paths.html + '*.html')
-    .pipe(reload({stream: true}));
+  gulp.src(paths.html + '*.html').pipe(reload({stream: true}));
 });
 
 // Ошибки
 const onError = function(error) {
-  gutil.log([
-    (error.name + ' in ' + error.plugin).bold.red,
-    '',
-    error.message,
-    ''
-  ].join('\n'));
+  gutil.log(
+    [(error.name + ' in ' + error.plugin).bold.red, '', error.message, ''].join(
+      '\n'
+    )
+  );
   gutil.beep();
   this.emit('end');
 };

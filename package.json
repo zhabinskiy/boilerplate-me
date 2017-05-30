@@ -1,15 +1,15 @@
 {
-  "name": "boilerplate-me",
-  "version": "1.0.0",
-  "description": "Easily boilerplate for frontend projects",
+  "name": "mcarthur-glen",
+  "version": "0.1.0",
+  "description": "Aviasales + McArthur Glen",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zhabinskiy/boilerplate-me.git"
+    "url": "git+https://zhabinskiy@bitbucket.org/zhabinskiy/mcarthur-glen.git"
   },
   "scripts": {
-    "build": "$(npm bin)/gulp",
-    "start": "$(npm bin)/gulp live"
+    "build": "node ./node_modules/gulp/bin/gulp.js",
+    "start": "node ./node_modules/gulp/bin/gulp.js live"
   },
   "author": "Konstantin Zhabinskiy",
   "license": "ISC",
@@ -23,6 +23,7 @@
     "gulp-plumber": "^1.1.0",
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^2.1.2",
+    "gulp-util": "^3.0.8",
     "portfinder": "^1.0.13",
     "sass-lint": "^1.10.2"
   }
